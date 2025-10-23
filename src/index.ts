@@ -1,7 +1,11 @@
 #!/usr/bin/env node
 
+import { config as dotenvConfig } from 'dotenv';
 import { GitHubMCPServer } from './server.js';
 import type { ServerConfig } from './types.js';
+
+// Load environment variables from .env file
+dotenvConfig();
 
 const version = '0.1.0';
 
