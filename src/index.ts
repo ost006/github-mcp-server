@@ -20,13 +20,17 @@ function getConfig(): ServerConfig {
   const host = process.env.GITHUB_HOST;
   const toolsets = process.env.GITHUB_TOOLSETS?.split(',').map(t => t.trim());
   const readOnly = process.env.GITHUB_READ_ONLY === '1' || process.env.GITHUB_READ_ONLY === 'true';
+  const transport = (process.env.MCP_TRANSPORT as 'stdio' | 'sse') || 'stdio';
+  const port = process.env.MCP_PORT ? parseInt(process.env.MCP_PORT, 10) : 3000;
 
   return {
     version,
     token,
     host,
     enabledToolsets: toolsets,
-    readOnly
+    readOnly,
+    transport,
+    port
   };
 }
 

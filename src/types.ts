@@ -1,12 +1,16 @@
 import { Octokit } from '@octokit/rest';
 import { graphql } from '@octokit/graphql';
 
+export type TransportType = 'stdio' | 'sse';
+
 export interface ServerConfig {
   version: string;
   host?: string;
   token: string;
   enabledToolsets?: string[];
   readOnly?: boolean;
+  transport?: TransportType;
+  port?: number;
 }
 
 export interface GitHubClients {
